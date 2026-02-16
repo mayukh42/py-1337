@@ -1,0 +1,15 @@
+[
+    {
+        "name": "alice",
+        "typed": "alicccce",
+        "expect": true
+    }, {
+        "name": "matt",
+        "typed": "mmaattt",
+        "expect": true
+    }, {
+        "name": "matt",
+        "typed": "mmaattp",
+        "expect": false
+    }
+]

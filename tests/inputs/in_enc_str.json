@@ -1,0 +1,22 @@
+[
+    {
+        "enc": "abcde",
+        "dec": "abcde"
+    },
+    {
+        "enc": "3[a]2[bc]",
+        "dec": "aaabcbc"
+    },
+    {
+        "enc": "3[a2[c]]",
+        "dec": "accaccacc"
+    },
+    {
+        "enc": "2[abc]3[cd]ef",
+        "dec": "abcabccdcdcdef"
+    },
+    {
+        "enc": "2[abc]\\4\\23[cd]ef",
+        "dec": "abcabc42cdcdcdef"
+    }
+]

@@ -34,10 +34,10 @@ class StackElem():
 
 def decode(enc_str) -> str:
     dec_str = ""
-    # state machine
     state = State.REG
     stack = []
     end = len(enc_str)
+    # state machine
     for i in range(end):
         if is_digit(enc_str[i]) and i+1 < end and enc_str[i+1] == "[":
             # state transition to [...] segment
@@ -73,6 +73,5 @@ def decode(enc_str) -> str:
         elif is_alphabet(enc_str[i]):
             dec_str += enc_str[i]
         i += 1
-
 
     return dec_str

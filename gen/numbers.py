@@ -1,7 +1,8 @@
+import math
+MIRROR_DIGITS = {0: 0, 1: 1, 6: 9, 8: 8, 9: 6}
 
 def mirrored(digit):
-    mirror = {0: 0, 1: 1, 6: 9, 8: 8, 9: 6}
-    return mirror.get(digit, -1)
+    return MIRROR_DIGITS.get(digit, -1)
 
 def digits(num):
     ds = []
@@ -57,3 +58,53 @@ def confusing_naive(num):
                 res[m] = True
     return list(sorted(res.keys()))
 
+
+def combine_digits(pwr10, n, ds, limit=0):
+    cmb = []
+    if not ds:
+        pwr10 = 0
+        ds = [0]
+    for d in ds:
+        num = n * 10 ** pwr10 + d
+        if (limit and num <= limit) or not limit:
+            cmb.append(num)
+    return cmb
+
+
+def cross_combine(xs, ys, limit=0):
+    if not xs:
+        return ys, 0
+    if not ys:
+        return xs, 0
+    xyc = []
+    l10 = math.log10(ys[-1])
+    pwr10x = int(l10) + 1
+    last = 0
+    for x in xs:
+        for y in ys:
+            n = x * (10 ** pwr10x) + y
+            if limit and n > limit:
+                if not last:
+                    # capturing last helps with looping up to limit in caller, since the loop may not end at limit
+                    last = n
+                break
+            xyc.append(n)
+    return xyc, last
+
+''' OPT: calculate mirrored list of 1 digit, then add them as prefix digit each and repeat first list to get mirrored list of 2 digits, then add 3rd digit as prefix and add all so far for 2 digits to make 3 digit list, etc.
+'''
+def confusing(limit):
+    xs = list(MIRROR_DIGITS.keys())
+    lm = len(xs)
+    curr = -1
+    ys = []
+    i = 0
+    while curr <= limit:
+        ys, last = cross_combine(xs, ys, limit)
+        # print(i, ys)
+        i += 1
+        if not ys:
+            break
+        curr = max(ys[-1], last)
+
+    return ys

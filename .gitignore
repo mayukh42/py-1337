@@ -214,4 +214,5 @@ __marimo__/
 test/creds
 local/creds
 
-
+# temp files
+temp.*

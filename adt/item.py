@@ -14,6 +14,7 @@ class Item:
     def __repr__(self) -> str:
         return f"{self.l}: {self.wt}w.{self.vl}v{self.vw():.2f}"
 
+# primitives for 01 knapsack
 # item lambdas
 item_vw_az = lambda i1, i2: i1.vw() - i2.vw()
 item_vw_za = lambda i1, i2: -item_vw_az(i1, i2)
@@ -28,14 +29,14 @@ item_sum_vl = lambda items: reduce(lambda x, y: x + y, map(lambda i: i.vl, items
 item_labels = lambda items: "".join(map(lambda i: i.l, items))
 items_map = lambda items: dict(map(lambda i: (i.l, i), items))
 
-
+# json encoder for print
 class ItemJSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, Item):
             return f"{o.l}: {o.wt}w.{o.vl}v{o.vw():.2f}"
         return super().default(o)
 
-
+# general purpose dp table cell
 @dataclass
 class DPTCell:
     vl: int

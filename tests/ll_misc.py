@@ -26,6 +26,26 @@ def test_reverse(data):
         )
 
 
+def test_reverse_arrows(data):
+    print("reverse_arrows")
+    for inp in data:
+        l1 = create_list(inp["list1"])
+        head, tail = reverse_arrows(l1)
+        res1 = create_list(inp["res1"])
+        print(tail, head, "pass" if head == res1 else "fail"
+        )
+
+
+def test_reverse_k(data):
+    print("reverse_k")
+    for inp in data:
+        l1 = create_list(inp["list1"])
+        r1 = reverse_k(l1, inp["k"])
+        res1 = create_list(inp["res1"])
+        print(r1, "k =", inp["k"], "pass" if r1 == res1 else "fail"
+        )
+
+
 if __name__ == '__main__':
     valid = valid_args(sys.argv, 1, "python tests/ll_misc.py inp_file.json")
     if not valid:
@@ -33,5 +53,7 @@ if __name__ == '__main__':
 
     data = get_input(sys.argv[1])
 
-    test_move(data["move"])
-    test_reverse(data["reverse"])
+    # test_move(data["move"])
+    # test_reverse(data["reverse"])
+    # test_reverse_arrows(data["reverse"])
+    test_reverse_k(data["reverse_k"])

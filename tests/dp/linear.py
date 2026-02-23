@@ -18,6 +18,13 @@ def test_fib_memo(data):
         print(n, f, "pass" if f == inp["f"] else "fail")
 
 
+def test_kadane(data):
+    for inp in data:
+        xs = inp["arr"]
+        es, best = kadane_empty(xs)
+        print(xs, es, best, "pass" if es == inp["expect"] and best == inp["sum"] else "fail")
+
+
 if __name__ == '__main__':
     valid = valid_args(sys.argv, 1, "python tests/dp/linear.py inp_file.json")
     if not valid:
@@ -25,6 +32,7 @@ if __name__ == '__main__':
 
     data = get_input(sys.argv[1])
 
-    # test_fib(data["fib"])
-    # test_fib_memo(data["fib"])
+    test_fib(data["fib"])
+    test_fib_memo(data["fib"])
+    test_kadane(data["maxsum_subarr"])
 

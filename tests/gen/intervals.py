@@ -1,5 +1,5 @@
 from gen.intervals import *
-from utils import *
+from tests.utils import *
 import sys
 
 

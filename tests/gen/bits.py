@@ -1,5 +1,5 @@
 from gen.bits import *
-from utils import *
+from tests.utils import *
 import sys
 
 

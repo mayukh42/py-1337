@@ -1,5 +1,5 @@
 import sys
-from utils import *
+from tests.utils import *
 from gen.numbers import *
 from datetime import datetime
 

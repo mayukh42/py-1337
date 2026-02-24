@@ -24,6 +24,21 @@ def lcs_naive(s1, s2):
     return lcs
 
 
+''' lcs(): longest common subsequence
+    canonical bottom-up dp algorithm
+    O(mn) time and space
+
+    example dp table:
+
+        abcde, ace
+
+        0   1   2   3   4   5
+    0   0   0   0   0   0   0
+    1   0   1   1   1   1   1
+    2   0   1   1   2   2   2
+    3   0   1   1   2   2   3
+
+'''
 def lcs(s1, s2):
     r = len(s1) + 1
     c = len(s2) + 1

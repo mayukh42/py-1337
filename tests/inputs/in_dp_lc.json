@@ -1,0 +1,27 @@
+{
+    "lcp": [
+        {
+            "string": "malayalam",
+            "res": ["malayalam"]
+        }
+    ],
+    "lcs": [
+        {
+            "s1": "ace",
+            "s2": "abcde",
+            "res": 3
+        }, {
+            "s1": "abcd",
+            "s2": "abcd",
+            "res": 4
+        }, {
+            "s1": "abcde",
+            "s2": "fgh",
+            "res": 0
+        }, {
+            "s1": "abcde",
+            "s2": "fab",
+            "res": 2
+        }
+    ]
+}

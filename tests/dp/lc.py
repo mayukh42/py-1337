@@ -27,7 +27,7 @@ def test_lcs(data):
 
 
 if __name__ == '__main__':
-    valid = valid_args(sys.argv, 1, "python tests/dp/lcp.py inp_file.json")
+    valid = valid_args(sys.argv, 1, "python tests/dp/lc.py inp_file.json")
     if not valid:
         sys.exit(1)
 

@@ -1,6 +1,7 @@
 
 from dataclasses import dataclass
 from collections import deque as Queue
+from adt.graphs import AdjList
 
 @dataclass
 class BTNode:
@@ -136,5 +137,29 @@ class BTNode:
                     elems.append(top.val)
                     prev = top
         return elems
+
+
+def bst_from_adjlist(adjlist, root_v):
+    root = BTNode(root_v)
+    nodes_map = {root_v: root}
+
+    def get_node(val):
+        if val not in nodes_map:
+            btnode = BTNode(val)
+            nodes_map[val] = btnode
+        else:
+            btnode = nodes_map[val]
+        return btnode
+
+    for node_v in adjlist.get_nodes():
+        btnode = get_node(node_v)
+        for nbr_v in adjlist.get_neighbors(node_v):
+            nbrnode = get_node(nbr_v)
+            # BST, no duplicates
+            if nbr_v < node_v:
+                btnode.add_left(nbrnode)
+            elif nbr_v > node_v:
+                btnode.add_right(nbrnode)
+    return root
 
 

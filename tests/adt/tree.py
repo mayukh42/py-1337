@@ -1,5 +1,6 @@
 import sys
 from adt.tree import *
+from adt.graphs import AdjList
 from tests.utils import *
 
 '''
@@ -7,7 +8,7 @@ from tests.utils import *
             2               6
         1       3       5       7
 '''
-def test_tree():
+def get_tree():
     t = BTNode(4).add_left(
             BTNode(2).add_left(
                 BTNode(1)
@@ -21,6 +22,10 @@ def test_tree():
                 BTNode(7)
             )
         )
+    return t
+
+def test_tree():
+    t = get_tree()
     print(t)
     print("in", t.inorder())
     print("pre", t.preorder())
@@ -32,11 +37,18 @@ def test_tree():
     print("dfs_in", t.dfs_in())
     print("dfs_post_2sp", t.dfs_post_2sp())
 
+def test_tree_by_create(data):
+    for inp in data:
+        al = AdjList(inp["adjlist"])
+        bt = bst_from_adjlist(al, inp["root_node"])
+        print(bt)
+
 
 if __name__ == '__main__':
-    # valid = valid_args(sys.argv, 1, "python tests/dp/lcp.py inp_file.json")
-    # if not valid:
-    #     sys.exit(1)
+    valid = valid_args(sys.argv, 1, "python tests/dp/lcp.py inp_file.json")
+    if not valid:
+        sys.exit(1)
 
-    # data = get_input(sys.argv[1])
-    test_tree()
+    data = get_input(sys.argv[1])
+    # test_tree()
+    test_tree_by_create(data["binary_tree"])

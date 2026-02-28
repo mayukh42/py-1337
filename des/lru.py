@@ -15,7 +15,9 @@ class DeqItem():
 ''' LRU cache
     when cache is full, evict the leart recently used
     implementation with a double linked list (collections.deque) and a hashmap (dict)
-    invariant: lru at tail, mru at head
+    invariant: 
+    lru at head (popleft at evict), 
+    mru at tail (append if space exists)
 '''
 class LRUCache(object):
     # head: lru, tail: mru

@@ -22,7 +22,7 @@ from adt.item import DPTCell
 
     related problems
     partition a number into multiples of 1 or more numbers 
-    climbing staits - up to n steps at a time
+    climbing stairs - up to n steps at a time
     eating choco bar - up to n bites at a time
     etc.
 '''
@@ -51,7 +51,7 @@ def rod_cuts(sects, length):
                 d_rem = dpt.get(i-1, rem)
                 # combine
                 d_acc = d_acc.add(d_rem)
-                # move to next multiple of j
+                # move to next multiple of i
                 acc += i
 
             dpt.set(i, j, d_acc)

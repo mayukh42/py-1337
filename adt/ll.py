@@ -36,8 +36,6 @@ class LLNode:
             return False
         return True
 
-
-
 def create_list(items=[]):
     head = None
     curr = head

@@ -1,0 +1,40 @@
+{
+    "double_ll": [
+        {
+            "arr": "abcde",
+            "max_len": 10,
+            "items": ["a", "b", "c", "d", "e"] 
+        }, {
+            "arr": "abcdefghijk",
+            "max_len": 10,
+            "items": ["b", "c", "d", "e", "f", "g", "h", "i", "j", "k"]
+        }
+    ], 
+    "lru": [
+        {
+            "objects": {
+                "a": "ABCDE",
+                "b": "FGHI",
+                "c": "JKL",
+                "d": "MN",
+                "e": "O"
+            },
+            "max_len": 5,
+            "ops": [
+                {
+                    "get": "c",
+                    "res": "JKL"
+                }, {
+                    "get": "a",
+                    "res": "ABCDE"
+                }, {
+                    "get": "g",
+                    "res": null
+                }, {
+                    "add": {"f": "PQ"},
+                    "res": "FGHI"
+                }
+            ]
+        }
+    ]
+}

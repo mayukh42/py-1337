@@ -1,4 +1,17 @@
 {
+    "palin": [
+        {
+            "string": "malayalam",
+            "res": true
+        }, 
+        {
+            "string": "abba",
+            "res": true
+        }, {
+            "string": "takkar",
+            "res": false
+        }
+    ],
     "lcp": [
         {
             "string": "malayalam",

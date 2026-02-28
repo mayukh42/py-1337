@@ -4,6 +4,12 @@ from dp.lcp import *
 from dp.lcs import *
 
 
+def test_palin(data):
+    for inp in data:
+        ss = inp["string"]
+        res = is_palin(ss)
+        print(ss, res, "pass" if inp["res"] == res else "fail")
+
 def test_lcp(data):
     for inp in data:
         ss = inp["string"]
@@ -33,8 +39,7 @@ if __name__ == '__main__':
 
     data = get_input(sys.argv[1])
 
+    test_palin(data["palin"])
     # test_lcp(data["lcp"])
     # test_lcs_naive(data["lcs"])
-    test_lcs(data["lcs"])
-
-
+    # test_lcs(data["lcs"])

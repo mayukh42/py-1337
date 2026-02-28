@@ -1,6 +1,22 @@
 
 BOGUS = '|'
 
+''' is_palin()
+    check for palindrome with exactly same logic for even and odd length strings
+'''
+def is_palin(ss):
+    n = len(ss)
+    lo, hi = 0, n - 1
+    # for odd length strings, the below will be same
+    mid_r, mid_l = lo + int(n/2), hi - int(n/2)
+    while not (mid_r >= n or mid_l < 0):
+        if ss[mid_r] != ss[mid_l]:
+            return False
+        mid_r += 1
+        mid_l -= 1
+    return True
+
+
 def add_bogus(ss, b=BOGUS):
     if b in ss:
         raise Exception(f"invalid bogus char {b}")

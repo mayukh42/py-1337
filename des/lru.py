@@ -1,5 +1,4 @@
 from adt.double_ll import *
-from datetime import datetime
 from dataclasses import dataclass
 import time
 
@@ -18,7 +17,7 @@ class DeqItem():
     implementation with a double linked list (collections.deque) and a hashmap (dict)
     invariant: lru at tail, mru at head
 '''
-class LRU(object):
+class LRUCache(object):
     # head: lru, tail: mru
     def __init__(self, capacity):
         self.deq = DoubleLL([], capacity)

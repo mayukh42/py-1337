@@ -10,6 +10,12 @@
         }, {
             "string": "takkar",
             "res": false
+        }, {
+            "string": "adida",
+            "res": true
+        }, {
+            "string": "y",
+            "res": true
         }
     ],
     "lcp": [

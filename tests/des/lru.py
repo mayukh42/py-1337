@@ -1,12 +1,12 @@
 
 import sys
 from tests.utils import *
-from des.lru import LRU
+from des.lru import LRUCache
 
 def test_lru(data):
     for inp in data:
         arr = inp["objects"]
-        cache = LRU(inp["max_len"])
+        cache = LRUCache(inp["max_len"])
         for k, v in arr.items():
             cache.add(k, v)
             print(cache)
@@ -24,7 +24,7 @@ def test_lru(data):
 
 
 if __name__ == '__main__':
-    valid = valid_args(sys.argv, 1, "python tests/double_ll.py inp_file.json")
+    valid = valid_args(sys.argv, 1, "python tests/des/lru.py inp_file.json")
     if not valid:
         sys.exit(1)
 

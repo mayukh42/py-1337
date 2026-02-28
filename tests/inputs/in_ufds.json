@@ -1,0 +1,26 @@
+{
+    "ufds": [
+        {
+            "sets": {
+                "a": ["d", "g"],
+                "f": ["i"],
+                "b": ["c", "f"],
+                "k": ["l"],
+                "h": ["k"],
+                "e": ["h", "j"]
+            },
+            "ops": {
+                "first": {
+                    "makeset": ["a", "b", "c", "d"],
+                    "union": ["a", "b", "c"],
+                    "find": ["c"],
+                    "contains": ["d"]
+                },
+                "second": {
+                    "union": ["d"],
+                    "contains": ["d"]
+                }
+            }
+        }
+    ]
+}

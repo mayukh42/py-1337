@@ -3,6 +3,7 @@ from datetime import datetime
 from dataclasses import dataclass
 import time
 
+
 @dataclass
 class DeqItem():
     k: str
@@ -12,6 +13,11 @@ class DeqItem():
         return f"({self.k}: {self.o})"
 
 
+''' LRU cache
+    when cache is full, evict the leart recently used
+    implementation with a double linked list (collections.deque) and a hashmap (dict)
+    invariant: lru at tail, mru at head
+'''
 class LRU(object):
     # head: lru, tail: mru
     def __init__(self, capacity):
@@ -44,8 +50,8 @@ class LRU(object):
             size = self.get_size()
             self.keymap[key] = [int(time.time()), size - 1]
             return e
-        except Exception as e:
-            print(e)
+        except Exception as ex:
+            print(ex)
     
     def get(self, key):
         if key not in self.keymap:

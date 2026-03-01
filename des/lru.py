@@ -13,7 +13,7 @@ class DeqItem():
 
 
 ''' LRU cache
-    when cache is full, evict the leart recently used
+    when cache is full, evict the least recently used.
     implementation with a double linked list (collections.deque) and a hashmap (dict)
     invariant: 
     lru at head (popleft at evict), 
@@ -58,7 +58,7 @@ class LRUCache(object):
         if key not in self.keymap:
             return None
         val = self.keymap[key]
-        # the key is accessed, so remove and put it back at last index to maintain lru invariant
+        # the key is used, so remove and put it back at last index to maintain lru invariant
         ko, self.deq = self.deq.remove(val[1])
         # print(key, val, ko, self.elements())
         self.add(key, ko.o)

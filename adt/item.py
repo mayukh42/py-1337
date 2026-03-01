@@ -12,22 +12,8 @@ class Item:
         return float(self.vl)/ self.wt
     
     def __repr__(self) -> str:
-        return f"{self.l}: {self.wt}w.{self.vl}v{self.vw():.2f}"
+        return f"{self.l}: {self.wt}w{self.vl}v"
 
-# primitives for 01 knapsack
-# item lambdas
-item_vw_az = lambda i1, i2: i1.vw() - i2.vw()
-item_vw_za = lambda i1, i2: -item_vw_az(i1, i2)
-
-item_w_az = lambda i1, i2: i1.w - i2.w
-item_w_za = lambda i1, i2: -item_w_az(i1, i2)
-
-# functions on array of items
-item_sum_wt = lambda items: reduce(lambda x, y: x + y, map(lambda i: i.wt, items), 0)
-item_sum_vl = lambda items: reduce(lambda x, y: x + y, map(lambda i: i.vl, items), 0)
-
-item_labels = lambda items: "".join(map(lambda i: i.l, items))
-items_map = lambda items: dict(map(lambda i: (i.l, i), items))
 
 # json encoder for print
 class ItemJSONEncoder(json.JSONEncoder):
@@ -35,6 +21,7 @@ class ItemJSONEncoder(json.JSONEncoder):
         if isinstance(o, Item):
             return f"{o.l}: {o.wt}w.{o.vl}v{o.vw():.2f}"
         return super().default(o)
+
 
 # general purpose dp table cell
 @dataclass
@@ -48,3 +35,18 @@ class DPTCell:
     def add(self, o):
         return DPTCell(self.vl + o.vl, self.xs + o.xs)
 
+
+# primitives for 01 knapsack experiments
+# item lambdas
+item_vw_az = lambda i1, i2: i1.vw() - i2.vw()
+item_vw_za = lambda i1, i2: -item_vw_az(i1, i2)
+
+item_w_az = lambda i1, i2: i1.w - i2.w
+item_w_za = lambda i1, i2: -item_w_az(i1, i2)
+
+# functions on array of items
+item_sum_wt = lambda items: reduce(lambda x, y: x + y, map(lambda i: i.wt, items), 0)
+item_sum_vl = lambda items: reduce(lambda x, y: x + y, map(lambda i: i.vl, items), 0)
+
+item_labels = lambda items: "".join(map(lambda i: i.l, items))
+items_map = lambda items: dict(map(lambda i: (i.l, i), items))

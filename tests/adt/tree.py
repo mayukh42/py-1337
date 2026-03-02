@@ -1,6 +1,6 @@
 import sys
 from adt.tree import *
-from adt.graphs import AdjList
+from adt.graphs import AdjList_Graph
 from tests.utils import *
 
 '''
@@ -39,7 +39,7 @@ def test_tree():
 
 def test_tree_by_create(data):
     for inp in data:
-        al = AdjList(inp["adjlist"])
+        al = AdjList_Graph(inp["adjlist"])
         bt = bst_from_adjlist(al, inp["root_node"])
         print(bt)
 
